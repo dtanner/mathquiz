@@ -1,4 +1,4 @@
 mathquiz
 ========
 
-Little kid's math speed tests
+Little kids speed math quiz generator.

@@ -8,9 +8,9 @@ class MakeMathQuiz {
 
     def number_of_rows = 8
     def number_of_columns = 5
-    def highest_number_to_use_in_test = 20
+    def highest_number_to_use_in_test = 5
     def number_of_tests_to_create = 2
-    def type_of_test = "add" // one of add, subtract, multiply, divide
+    def type_of_test = "subtract" // one of add, subtract, multiply, divide
 
     // you don't need to change anything below this
 
@@ -19,52 +19,42 @@ class MakeMathQuiz {
     static void main(args) {
         MakeMathQuiz test = new MakeMathQuiz()
         if (args) {
-            test.type_of_test = Integer.parseInt(args[0])
+            test.type_of_test = args[0]
         }
 
         test.createHtmlFile("math-test.html")
     }
 
 
-    int getRandomNumber(int maxValue) {
-        // any number between 1 and the maximum value
-        random.nextInt(maxValue + 1)
+    int getRandomNumberBetween(int minValue, int maxValue) {
+        random.nextInt(maxValue) + minValue
     }
 
     String buildCell() {
         if (type_of_test == "add") return buildAdditionCell()
         if (type_of_test == "subtract") return buildSubtractionCell()
         if (type_of_test == "multiply") return buildMultiplicationCell()
-        if (type_of_test == "divide") return buildDivisionCell()
         throw new RuntimeException("I don't know what type of cell to build.")
     }
 
     String buildAdditionCell() {
-        """${getRandomNumber(highest_number_to_use_in_test)} <br>
-       + ${getRandomNumber(highest_number_to_use_in_test)} <br>
+        """${getRandomNumberBetween(1, highest_number_to_use_in_test)} <br>
+       + ${getRandomNumberBetween(1, highest_number_to_use_in_test)} <br>
       <hr width=40px>
     """
     }
 
     String buildSubtractionCell() {
-        int topValue = getRandomNumber(highest_number_to_use_in_test)
+        int topValue = getRandomNumberBetween(2, highest_number_to_use_in_test)
         """${topValue} <br>
-           - ${getRandomNumber(topValue)} <br>
-          <hr width=40px>
-        """
-    }
-
-    String buildDivisionCell() {
-        int topValue = getRandomNumber(highest_number_to_use_in_test)
-        """${topValue} <br>
-           &divide; ${getRandomNumber(topValue)} <br>
+           - ${getRandomNumberBetween(1, topValue - 1)} <br>
           <hr width=40px>
         """
     }
 
     String buildMultiplicationCell() {
-        """${getRandomNumber(highest_number_to_use_in_test)} <br>
-       x ${getRandomNumber(highest_number_to_use_in_test)} <br>
+        """${getRandomNumberBetween(1, highest_number_to_use_in_test)} <br>
+       x ${getRandomNumberBetween(1, highest_number_to_use_in_test)} <br>
       <hr width=40px>
       """
     }

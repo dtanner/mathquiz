@@ -63,9 +63,9 @@ class MakeMathQuiz {
 
     String buildSubtractionCell() {
         int topValue = getRandomNumberBetween(2, highest_number_to_use_in_test)
-        """${topValue} <br>
-           - ${getRandomNumberBetween(1, topValue - 1)} <br>
-          <hr width=40px>
+        """<span style="float: right">${topValue}</span><br>
+           <span style="float: left">-</span><span style="float: right">${getRandomNumberBetween(1, topValue - 1)}</span><br>
+          <hr width=40px style="margin-top: 4px">
         """
     }
 

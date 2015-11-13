@@ -1,3 +1,5 @@
+#! /usr/bin/env groovy
+
 import groovy.xml.MarkupBuilder
 
 class MakeMathQuiz {
@@ -6,9 +8,10 @@ class MakeMathQuiz {
 
     // editable values
 
-    def number_of_rows = 8
-    def number_of_columns = 5
-    def highest_number_to_use_in_test = 5
+    def number_of_rows = 7
+    def number_of_columns = 10
+    def highest_number_to_use_in_test = 18
+    def maximum_addition_total = 20
     def number_of_tests_to_create = 5
     def type_of_test = "divide" // one of add, subtract, multiply, divide
 
@@ -51,9 +54,10 @@ class MakeMathQuiz {
     }
 
     String buildAdditionCell() {
-        """${getRandomNumberBetween(1, highest_number_to_use_in_test)} <br>
-       + ${getRandomNumberBetween(1, highest_number_to_use_in_test)} <br>
-      <hr width=40px>
+        int topValue = getRandomNumberBetween(1, highest_number_to_use_in_test)
+        """<span style="float: right">${topValue}</span><br>
+       <span style="float: left">+</span><span style="float: right">${getRandomNumberBetween(1, maximum_addition_total - topValue)}</span><br>
+      <hr width=40px style="margin-top: 4px">
     """
     }
 
@@ -102,7 +106,7 @@ class MakeMathQuiz {
                         number_of_rows.times {
                             tr() {
                                 number_of_columns.times {
-                                    td([align: 'right', style: 'font-size:22px; padding-left:30px; padding-right:30px;padding-bottom:30px'], { mkp.yieldUnescaped(buildCell()) })
+                                    td([style: 'font-size:20px; padding-left:30px; padding-right:30px;padding-bottom:120px'], { mkp.yieldUnescaped(buildCell()) })
                                 }
                             }
                         }

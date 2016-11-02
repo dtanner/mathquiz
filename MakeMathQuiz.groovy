@@ -8,12 +8,12 @@ class MakeMathQuiz {
 
     // editable values
 
-    def number_of_rows = 7
-    def number_of_columns = 10
-    def highest_number_to_use_in_test = 18
-    def maximum_addition_total = 20
+    def number_of_rows = 5
+    def number_of_columns = 5
+    def highest_number_to_use_in_test = 500 
+    def maximum_addition_total = 999
     def number_of_tests_to_create = 5
-    def type_of_test = "divide" // one of add, subtract, multiply, divide
+    def type_of_test = "add" // one of add, subtract, multiply, divide
 
     // you don't need to change anything below this
 

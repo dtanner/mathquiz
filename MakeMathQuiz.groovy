@@ -17,6 +17,8 @@ class MakeMathQuiz {
 
     // you don't need to change anything below this
 
+    String cellWidth = "50px"
+
     Random random = new Random()
 
     static void main(args) {
@@ -57,7 +59,7 @@ class MakeMathQuiz {
         int topValue = getRandomNumberBetween(1, highest_number_to_use_in_test)
         """<span style="float: right">${topValue}</span><br>
        <span style="float: left">+</span><span style="float: right">${getRandomNumberBetween(1, maximum_addition_total - topValue)}</span><br>
-      <hr width=40px style="margin-top: 4px">
+      <hr width=$cellWidth style="margin-top: 4px">
     """
     }
 
@@ -65,7 +67,7 @@ class MakeMathQuiz {
         int topValue = getRandomNumberBetween(2, highest_number_to_use_in_test)
         """<span style="float: right">${topValue}</span><br>
            <span style="float: left">-</span><span style="float: right">${getRandomNumberBetween(1, topValue - 1)}</span><br>
-          <hr width=40px style="margin-top: 4px">
+          <hr width=$cellWidth style="margin-top: 4px">
         """
     }
 
@@ -82,14 +84,14 @@ class MakeMathQuiz {
         
         """${numerator} <br>
            &divide; ${denominator} <br>
-          <hr width=40px>
+          <hr width=$cellWidth>
         """
     }
 
     String buildMultiplicationCell() {
         """${getRandomNumberBetween(1, highest_number_to_use_in_test)} <br>
        x ${getRandomNumberBetween(1, highest_number_to_use_in_test)} <br>
-      <hr width=40px>
+      <hr width=$cellWidth>
       """
     }
 
@@ -106,7 +108,7 @@ class MakeMathQuiz {
                         number_of_rows.times {
                             tr() {
                                 number_of_columns.times {
-                                    td([style: 'font-size:20px; padding-left:30px; padding-right:30px;padding-bottom:120px'], { mkp.yieldUnescaped(buildCell()) })
+                                    td([style: 'font-size:25px; padding-left:40px; padding-right:40px;padding-bottom:100px'], { mkp.yieldUnescaped(buildCell()) })
                                 }
                             }
                         }

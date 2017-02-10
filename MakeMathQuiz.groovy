@@ -10,10 +10,10 @@ class MakeMathQuiz {
 
     def number_of_rows = 5
     def number_of_columns = 5
-    def highest_number_to_use_in_test = 500 
+    def highest_number_to_use_in_test = 9
     def maximum_addition_total = 999
     def number_of_tests_to_create = 5
-    def type_of_test = "add" // one of add, subtract, multiply, divide
+    def type_of_test = "multiply" // one of add, subtract, multiply, divide
 
     // you don't need to change anything below this
 
@@ -89,8 +89,8 @@ class MakeMathQuiz {
     }
 
     String buildMultiplicationCell() {
-        """${getRandomNumberBetween(1, highest_number_to_use_in_test)} <br>
-       x ${getRandomNumberBetween(1, highest_number_to_use_in_test)} <br>
+        """<span style="float: right">${getRandomNumberBetween(1, highest_number_to_use_in_test)} </span><br>
+       x <span style="float: right">${getRandomNumberBetween(1, highest_number_to_use_in_test)} </span><br>
       <hr width=$cellWidth>
       """
     }
